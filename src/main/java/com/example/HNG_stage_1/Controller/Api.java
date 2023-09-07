@@ -24,9 +24,6 @@ public class Api {
         utcTime.format(formatter);
 
 
-//        OffsetDateTime utcTime = OffsetDateTime.now(ZoneOffset.UTC);
-//        String UtcTime = utcTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-
         String dayOfWeek = utcTime.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.US);
         return new ResponseEntity<>(new OutputDTO(slack_name, track, utcTime.format(formatter), dayOfWeek), HttpStatus.OK);
     }
