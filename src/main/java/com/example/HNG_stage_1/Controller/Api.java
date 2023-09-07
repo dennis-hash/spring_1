@@ -23,7 +23,6 @@ public class Api {
         LocalDateTime utcTime = LocalDateTime.now(ZoneOffset.UTC);
         utcTime.format(formatter);
 
-
         String dayOfWeek = utcTime.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.US);
         return new ResponseEntity<>(new OutputDTO(slack_name, track, utcTime.format(formatter), dayOfWeek), HttpStatus.OK);
     }
