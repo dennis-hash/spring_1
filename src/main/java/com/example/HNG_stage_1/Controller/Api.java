@@ -19,9 +19,9 @@ public class Api {
     @GetMapping
     public ResponseEntity<?> getDetails(@RequestParam("slack_name") String slack_name, @RequestParam("track") String track){
 
+        OffsetDateTime utcTime = OffsetDateTime.now(ZoneOffset.UTC);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        LocalDateTime utcTime = LocalDateTime.now(ZoneOffset.UTC);
-        utcTime.format(formatter);
+        String utcTimeString = utcTime.format(formatter);
 
         String dayOfWeek = utcTime.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.US);
         return new ResponseEntity<>(new OutputDTO(slack_name, track, utcTime.format(formatter), dayOfWeek), HttpStatus.OK);
